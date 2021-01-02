@@ -5,7 +5,7 @@ from io import BytesIO
 import pytesseract
 from django.views.decorators.csrf import csrf_exempt
 
-pytesseract.pytesseract.tesseract_cmd = r'C://Program Files/Tesseract-OCR/tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
 
 @csrf_exempt
 def imageToText(request):
