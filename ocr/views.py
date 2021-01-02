@@ -7,7 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 pytesseract.pytesseract.tesseract_cmd = r'C://Program Files/Tesseract-OCR/tesseract.exe'
 
-
 @csrf_exempt
 def imageToText(request):
     if request.method == 'POST':
