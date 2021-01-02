@@ -25,7 +25,7 @@ SECRET_KEY = '3ifv014mcn0)53zm&rn9#-73^i*zac^brvnh6zfjv&cmzb_2os'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["https://ocr-api-text.herokuapp.com/"]
+ALLOWED_HOSTS = ["ocr-api-text.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
