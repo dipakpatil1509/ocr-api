@@ -10,14 +10,17 @@ pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
 @csrf_exempt
 def imageToText(request):
     if request.method == 'POST':
-        url = request.POST['url']
-        response = requests.get(url)
-        img = Image.open(BytesIO(response.content))
-        text = pytesseract.image_to_string(img)
+        try:
+            response = requests.get(url)
+            img = Image.open(BytesIO(response.content))
+            text = pytesseract.image_to_string(img)
 
-        result = {'text': text}
+            result = {'text': text}
 
-        return JsonResponse(result)
+            return JsonResponse(result)
+        except expression as identifier:
+            return JsonResponse({'errorCode':404, 'error': 'Something went wrong. Please check url'})
+        
     text = "Hello there, this api only supports post methods....\n POST ocr/ \n body:{\n url: <image url>"
 
     return JsonResponse({'error': text})
