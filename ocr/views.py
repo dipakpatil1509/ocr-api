@@ -16,13 +16,12 @@ def imageToText(request):
             response = requests.get(url)
             img = Image.open(BytesIO(response.content))
             text = pytesseract.image_to_string(img)
-
             result = {'text': text}
-
             return JsonResponse(result)
-
-        except:
+        except Exception as e:
+            print(e)
             return JsonResponse({'errorCode': 400, 'error': "Something Went Wrong"})
+            
     text = "Hello there, this api only supports post methods....\n POST ocr/ \n body:{\n url: <image url>"
 
     return JsonResponse({'error': text})
