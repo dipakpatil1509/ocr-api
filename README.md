@@ -11,3 +11,4 @@ response
 {
     text : text from image
 }
+For tesseract ocr exe, https://towardsdatascience.com/deploy-python-tesseract-ocr-on-heroku-bbcc39391a8d
