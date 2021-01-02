@@ -5,12 +5,14 @@ from io import BytesIO
 import pytesseract
 from django.views.decorators.csrf import csrf_exempt
 
-pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
+pytesseract.pytesseract.tesseract_cmd = r'C://Program Files/Tesseract-OCR/tesseract.exe'
+
 
 @csrf_exempt
 def imageToText(request):
     if request.method == 'POST':
         try:
+            url = request.POST['url']
             response = requests.get(url)
             img = Image.open(BytesIO(response.content))
             text = pytesseract.image_to_string(img)
@@ -18,9 +20,9 @@ def imageToText(request):
             result = {'text': text}
 
             return JsonResponse(result)
-        except expression as identifier:
-            return JsonResponse({'errorCode':404, 'error': 'Something went wrong. Please check url'})
-        
+
+        except:
+            return JsonResponse({'errorCode': 400, 'error': "Something Went Wrong"})
     text = "Hello there, this api only supports post methods....\n POST ocr/ \n body:{\n url: <image url>"
 
     return JsonResponse({'error': text})
